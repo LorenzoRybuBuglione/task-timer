@@ -1,7 +1,8 @@
 import React from "react";
+import styles from "./Button.module.scss";
 
 function Button() {
-  return <button>Adicionar</button>;
+  return <button className={styles.botao}>Adicionar</button>;
 }
 
 export default Button;
