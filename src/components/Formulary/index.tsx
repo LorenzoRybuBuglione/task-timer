@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ITarefa } from "../../types/tarefa";
 import Button from "../Button";
 import styles from "./Formulary.module.scss";
+import { v4 as uuidv4 } from "uuid";
 
 function Formulary({
   setTarefas,
@@ -13,7 +14,10 @@ function Formulary({
 
   function addTask(evento: React.FormEvent<HTMLFormElement>) {
     evento.preventDefault();
-    setTarefas((tarefasAntigas) => [...tarefasAntigas, { tarefa, tempo }]);
+    setTarefas((tarefasAntigas) => [
+      ...tarefasAntigas,
+      { tarefa, tempo, selecionado: false, completado: false, id: uuidv4() },
+    ]);
     setTarefa("");
     setTempo("00:00:00");
   }
