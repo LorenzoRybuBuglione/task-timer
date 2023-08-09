@@ -14,6 +14,8 @@ function Formulary({
   function addTask(evento: React.FormEvent<HTMLFormElement>) {
     evento.preventDefault();
     setTarefas((tarefasAntigas) => [...tarefasAntigas, { tarefa, tempo }]);
+    setTarefa("");
+    setTempo("00:00:00");
   }
 
   return (
