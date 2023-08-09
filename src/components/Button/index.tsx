@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./Button.module.scss";
 
-function Button() {
-  return <button className={styles.botao}>Adicionar</button>;
+function Button(props: { children: string }) {
+  return <button className={styles.botao}>{props.children}</button>;
 }
 
 export default Button;

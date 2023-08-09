@@ -27,7 +27,9 @@ function Formulary() {
           required
         />
       </div>
-      <Button />
+      <Button>
+        Adicionar
+      </Button>
     </form>
   );
 }
