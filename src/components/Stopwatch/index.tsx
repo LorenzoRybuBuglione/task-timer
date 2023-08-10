@@ -18,15 +18,30 @@ export default function Stopwatch({ selecionado }: Props) {
     }
   }, [selecionado]);
 
+  function countdown(counter: number = 0) {
+    setTimeout(() => {
+      if (counter > 0) {
+        setTempo(counter - 1);
+        return countdown(counter -1);
+      }
+    }, 1000);
+  }
+
   return (
     <div className={styles.cronometro}>
       <p className={styles.titulo}>
         Escolha um card e inicie o cronometro <br />
       </p>
       <div className={styles.relogioWrapper}>
-        <Clock tempo={tempo}/>
+        <Clock tempo={tempo} />
       </div>
-      <Button>Começar!</Button>
+      <Button
+        onClick={() => {
+          countdown(tempo);
+        }}
+      >
+        Começar!
+      </Button>
     </div>
   );
 }

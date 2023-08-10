@@ -1,17 +1,20 @@
 import styles from "./Button.module.scss";
 
-function Button(props: {
+interface Props {
   children: string;
   type?: "button" | "submit" | "reset" | undefined;
-}) {
-  let type = props.type;
-  if (props.type === undefined) {
-    type = "button";
+  onClick?: () => void;
+}
+
+function Button({ children, type, onClick }: Props) {
+  let typeCheck = type;
+  if (type === undefined) {
+    typeCheck = "button";
   }
 
   return (
-    <button type={type} className={styles.botao}>
-      {props.children}
+    <button type={typeCheck} className={styles.botao} onClick={onClick}>
+      {children}
     </button>
   );
 }
