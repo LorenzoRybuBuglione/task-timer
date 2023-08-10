@@ -19,11 +19,29 @@ function App() {
     );
   }
 
+  function onTaskComplete() {
+    if (selecionado) {
+      setTarefas((tarefasAnteriores) =>
+        tarefasAnteriores.map((tarefa) => {
+          if (tarefa.id === selecionado.id) {
+            return {
+              ...tarefa,
+              selecionado: false,
+              completado: true,
+            };
+          }
+          return tarefa;
+        })
+      );
+      setSelecionado(undefined);
+    }
+  }
+
   return (
     <div className={styles.AppStyle}>
       <Formulary setTarefas={setTarefas}></Formulary>
       <List tarefas={tarefas} selecionaTarefa={selectTask} />
-      <Stopwatch selecionado={selecionado} />
+      <Stopwatch selecionado={selecionado} onTaskComplete={onTaskComplete} />
     </div>
   );
 }

@@ -7,9 +7,10 @@ import styles from "./Stopwatch.module.scss";
 
 interface Props {
   selecionado: ITarefa | undefined;
+  onTaskComplete: () => void;
 }
 
-export default function Stopwatch({ selecionado }: Props) {
+export default function Stopwatch({ selecionado, onTaskComplete }: Props) {
   const [tempo, setTempo] = useState<number>();
 
   useEffect(() => {
@@ -22,8 +23,9 @@ export default function Stopwatch({ selecionado }: Props) {
     setTimeout(() => {
       if (counter > 0) {
         setTempo(counter - 1);
-        return countdown(counter -1);
+        return countdown(counter - 1);
       }
+      onTaskComplete()
     }, 1000);
   }
 
